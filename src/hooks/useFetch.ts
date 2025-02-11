@@ -14,8 +14,12 @@ export const useFetch = <T>(params: string): { data: T | null, loading: boolean,
                 }
                 const result: T = await response.json();
                 setData(result);
-            } catch (err: any) {
-                setError(err.message);
+            } catch (err: unknown) {
+                if (err instanceof Error) {
+                    setError(err.message);
+                } else {
+                    console.error('Unknown error:', err);
+                }
             } finally {
                 setLoading(false);
             }
