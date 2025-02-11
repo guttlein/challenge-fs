@@ -2,7 +2,11 @@
 
 Este es un proyecto creado con React, TypeScript y Vite. A continuación se presentan las instrucciones para configurar, ejecutar y desarrollar el proyecto.
 
-## Requisitos:
+## URL:
+
+El proyecto se encuentra subido a Vercel en el siguiente link: [https://challenge-fs-xi.vercel.app/](https://challenge-fs-xi.vercel.app/)
+
+## Requisitos para desarrollar:
 
 Antes de comenzar, asegúrate de tener las siguientes herramientas instaladas en tu máquina:
 
@@ -16,7 +20,7 @@ Sigue estos pasos para configurar el proyecto en tu máquina local.
 
 ### Clonar el repositorio:
 
-- git clone [https://github.com/tu-usuario/tu-repositorio.git](https://github.com/guttlein/challenge-fs.git)
+- git clone [https://github.com/tu-usuario/challenge-fs.git](https://github.com/guttlein/challenge-fs.git)
 - cd challenge-fs
 
 ### Instalar dependencias:
