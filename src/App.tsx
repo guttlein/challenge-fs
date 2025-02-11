@@ -8,7 +8,7 @@ import { useState, useRef } from 'react';
 
 function App() {
   const { data: users, loading: usersLoading, error: usersError } = useFetch<userType[]>("users");
-  const [usersFiltered, setUsersFiltered] = useState<userType[]>(users || []);
+  const [usersFiltered, setUsersFiltered] = useState<userType[]>([]);
 
   // Usamos una ref para guardar el ID del timeout
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
@@ -30,13 +30,15 @@ function App() {
 
     // Establecer un nuevo timeout para ejecutar la búsqueda después de 1 segundo
     timeoutRef.current = setTimeout(() => {
-      const filteredUsers = users.filter((user) =>
-        user.name.toLowerCase().includes(value.toLowerCase()) ||
-        user.username.toLowerCase().includes(value.toLowerCase()) ||
-        user.email.toLowerCase().includes(value.toLowerCase()) ||
-        user.company.name.toLowerCase().includes(value.toLowerCase())
-      );
-      setUsersFiltered(filteredUsers);
+      if (users) {
+        const filteredUsers = users.filter((user) =>
+          user.name.toLowerCase().includes(value.toLowerCase()) ||
+          user.username.toLowerCase().includes(value.toLowerCase()) ||
+          user.email.toLowerCase().includes(value.toLowerCase()) ||
+          user.company.name.toLowerCase().includes(value.toLowerCase())
+        );
+        setUsersFiltered(filteredUsers);
+      }
     }, 1000); // 1 segundo de espera
   };
 

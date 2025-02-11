@@ -1,5 +1,5 @@
 import React from 'react';
-import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, SortDirection } from '@mui/material';
+import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { Link } from "react-router";
 import { userType } from '../types/customTypes';
 import "./CustomTable.css"
@@ -10,10 +10,10 @@ interface CustomTableProps {
 }
 
 export const CustomTable: React.FC<CustomTableProps> = ({ users }) => {
-    const [order, setOrder] = React.useState<SortDirection>('asc');
-    const [orderBy, setOrderBy] = React.useState<string>('name'); // Se utilizará para saber por qué columna ordenar
+    const [order, setOrder] = React.useState<("asc" | "desc" | undefined)>('asc');
+    const [orderBy, setOrderBy] = React.useState<keyof userType>('name'); // Se utilizará para saber por qué columna ordenar
 
-    const handleRequestSort = (property: string) => {
+    const handleRequestSort = (property: keyof userType) => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
@@ -41,7 +41,7 @@ export const CustomTable: React.FC<CustomTableProps> = ({ users }) => {
 
     const sortedUsers = sortData(users, comparator);
 
-    const tableHeaders = ['name', 'username', 'phone', 'email', 'address.city', 'company.name']
+    const tableHeaders = ['Nombre', 'Usuario', 'Tel.', 'Email', 'Ciudad', 'Empresa']
 
     return (
         <TableContainer component={Paper}>
@@ -57,14 +57,9 @@ export const CustomTable: React.FC<CustomTableProps> = ({ users }) => {
                                 <TableSortLabel
                                     active={orderBy === columnId}
                                     direction={orderBy === columnId ? order : 'asc'}
-                                    onClick={() => handleRequestSort(columnId)}
+                                    onClick={() => handleRequestSort(columnId as keyof userType)}
                                 >
-                                    {columnId === 'name' ? 'Nombre' :
-                                        columnId === 'username' ? 'Nombre de usuario' :
-                                            columnId === 'phone' ? 'Teléfono' :
-                                                columnId === 'email' ? 'Email' :
-                                                    columnId === 'address.city' ? 'Ciudad' :
-                                                        'Nombre de la empresa'}
+                                    {columnId}
                                 </TableSortLabel>
                             </TableCell>
                         ))}
