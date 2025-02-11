@@ -1,0 +1,38 @@
+/* Tabla personalizada */
+.MuiTable-root {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+.MuiTableCell-head {
+    color: #000000;
+    font-weight: 600;
+}
+
+.MuiTableBody-root {
+    background-color: #f4f6f8;
+}
+
+.MuiTableRow-root:nth-child(odd) {
+    background-color: #f9f9f9;
+}
+
+.MuiTableRow-root:nth-child(even) {
+    background-color: #ffffff;
+}
+
+.MuiTableRow-root:hover {
+    background-color: #99bbc5;
+}
+
+.MuiTableCell-root {
+    padding: 16px;
+    font-size: 14px;
+    text-align: left;
+}
+
+.MuiTableCell-root:last-child {
+    padding-right: 24px;
+}

@@ -2,6 +2,7 @@ import React from 'react';
 import { Paper, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, TableSortLabel, SortDirection } from '@mui/material';
 import { Link } from "react-router";
 import { userType } from '../types/customTypes';
+import "./CustomTable.css"
 
 // Tipando las props del componente
 interface CustomTableProps {
